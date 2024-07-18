@@ -1,0 +1,8 @@
+애니종료시점
+
+fnSvgAnimation.js 파일에 svg가 종료되면 애니를 실행하라
+
+ex)
+    fnSvgAnimation.complete = function (item) {
+      cv.canNew.classList.add("move2");
+    };

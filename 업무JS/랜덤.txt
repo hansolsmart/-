@@ -1,0 +1,17 @@
+      
+      위에 함수 만들고
+    cv.shuffle = function (array) {
+        array.sort(() => Math.random() - 0.5);
+        return array;
+    }
+
+    console.log(cv.shuffle(cv.ranDomName));//랜덤
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+        for (var i = 0; i < cv.dragItem.length; i++) {
+            let item = cv.dragItem[i].getAttribute("data-item");
+	    ↑for문 안에 변수 만들어줌
+            cv.imgName.push(item);
+        }
+

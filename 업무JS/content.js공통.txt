@@ -1,0 +1,76 @@
+<변수>
+this.svg_nyangi = document.querySelector("#svg_nyangi"); // 애니
+this.outline = document.querySelector(".outline"); //별테두리
+
+  // 페이지 확인
+  this.container = document.querySelector("#container");
+  this.pageNum = document.querySelector(".pageNum");
+  this.page_data = cv.pageNum.getAttribute("data-check");
+  this.container_page = cv.container.getAttribute("data-page");
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ    
+fnSvgAnimation.complete = function (item) {
+      external.completeUnit(false, cv.onCompleteAPI);
+    };
+
+  /**
+   * content: onCompleteAPI
+   */
+  cv.onCompleteAPI = function () {
+    // 1. 학습 전송 완료 후 프로세스 진행
+    // 2. 모든 학습 종료 후 다음 학습 자동 진행을 위해 external.nextUnit() 호출
+    external.nextUnit();
+  };
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+  cv.guide_time = function (idx) {
+      //반짝이 테두리 start
+      if (guidelistTime > idx) {
+        // window.cancelAnimationFrame(cv.guideT);
+        if (cv.cidx == 0) {
+          cv.guide_content();
+          cv.cidx++;
+        }
+        cv.outline.classList.remove("hidden");
+        cv.outline.classList.add("line_ani");
+      } //10초가 지나면 테두리 나옴
+      if (guidelistTime > endTime) {
+        window.cancelAnimationFrame(cv.guideT);
+        cv.outline.classList.add("hidden");
+        cv.outline.classList.remove("line_ani");
+        console.log("err2");
+
+        cv.guide_time(cv.tidx);
+      } //14초가 지나면 테두리 사라짐
+      //console.log(guidelistTime); //미활동 타이머
+  };
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+  cv.init = function () {
+
+    //하단 페이지 확인
+    cv.page_num();
+}
+
+  
+
+cv.page_num = function () {
+    for (var i = 0; i < cv.page_data; i++) {
+      $(cv.pageNum).append(
+        '<div class="page_off"><div class = "check_off"></div></div>'
+      );
+      if (cv.page_data > 1 && i == 0) {
+        $(cv.pageNum).append('<div class="page_n"></div>');
+      }
+    }
+    if (cv.container_page !== undefined) {
+      var pageAll = cv.pageNum.querySelectorAll(".page_off");
+      var pagecheckAll = cv.pageNum.querySelectorAll(".check_off");
+      pageAll[cv.container_page - 1].classList.remove("page_off");
+      pagecheckAll[cv.container_page - 1].classList.remove("check_off");
+      pageAll[cv.container_page - 1].classList.add("page_on");
+      pagecheckAll[cv.container_page - 1].classList.add("check_on");
+    }
+  };

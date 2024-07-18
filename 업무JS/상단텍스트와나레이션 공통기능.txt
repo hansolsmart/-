@@ -1,0 +1,52 @@
+★★상단버튼이랑 나레이션text 공통기능★★
+  
+cv.show_hide = function () {
+    if (cv.text.classList.contains("hidden") == false) {
+      cv.text.classList.add("hidden");
+      ContentAudio.audio.pause();
+    } else {
+      // window.onResumeContents();
+      cv.text.classList.remove("hidden");
+    }
+  };
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+★★나레이션과클릭기능 공통기능★★
+  
+cv.audio_nar = function () {
+    ContentAudio.play(
+      cv.soundNar,
+      function () {
+        cv.guide_content();
+      },
+      function () {}
+    );
+  };
+//기본값
+
+  cv.audio_nar = function () {
+    ContentAudio.play(
+      cv.soundNar,
+      function () {
+        cv.guide_content();
+      },
+      function () {
+        cv.btnGreen.addEventListener(isTouch.click, cv.clickContent, false);
+        // 애니메이션시작
+      }
+    );
+  };
+//클릭애니있을때
+
+  cv.audio_nar = function () {
+    ContentAudio.play(
+      cv.soundNar,
+      function () {
+        cv.guide_content();
+      },
+      function () {
+        cv.content_drag();
+      }
+    );
+  };
+//드래그일때
+

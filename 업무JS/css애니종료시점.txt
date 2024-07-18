@@ -1,0 +1,18 @@
+ex)
+this.soundFactory = "./sound/eff_factory"; //공장 가동 효과음
+
+cv.clickContent = function () {
+    var self = this;
+    cv.canTrash.classList.add("move");
+    cv.canTrash.addEventListener("webkitAnimationEnd", audioFactory, false);
+    cv.canTrash.addEventListener("animationend", audioFactory, false);
+    function audioFactory() {
+      isAudio.play(cv.soundFactory, true);
+    }
+  };
+
+
+하성님이 정리한것
+8. addEventListener("사용 할 이벤트", 호출함수); <= 이벤트 추가할때 사용
+9. removeEventListener("제거 할 이벤트", 호출함수); <= 이벤트 제거할때 사용
+  [ cv.guideDiv.removeEventListener("webkitAnimationEnd", cv.guideDivEnd, false); ]

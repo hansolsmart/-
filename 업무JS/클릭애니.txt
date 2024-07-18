@@ -1,0 +1,20 @@
+2개이상 클릭애니 ex)
+
+  1)this.gb = document.querySelectorAll(".gb"); //쓰레기들
+
+
+  2)cv.init = function () {
+    var self = this;
+
+    for (var i = 0; i < cv.gb.length; i++) {
+      cv.gb[i].addEventListener("click", cv.clickContent, false);
+      // 변수 2개이상
+    }
+	또는 cv.변수명.addEventListener("click", cv.clickContent, false);
+  };
+
+
+  3)cv.clickContent = function () {
+    var self = this;
+    self.classList.add("hidden");
+  };

@@ -1,0 +1,68 @@
+<<<< JS >>>>  
+cv.next = function () {
+    var self = this;
+
+    cv.click_ans = self.getAttribute("data-ans");
+
+    for (var i = 0; i < cv.click_img.length; i++) {
+      cv.click_img[i].removeEventListener(isTouch.click, cv.next, false);
+      cv.click_img[i].addEventListener(isTouch.click, cv.next, false);
+      cv.click_img[i].classList.remove("grayscale_on");
+    }
+
+    if (cv.click_ans == "ans") {
+      isAudio.play(cv.soundAnswer, true);
+      console.log("정답");
+      cv.click_img[1].classList.add("grayscale_off");
+
+      cv.click_img[1].addEventListener("animationend", ans_event, false);
+      cv.click_img[1].addEventListener("webkitAnimationEnd", ans_event, false);
+
+      function ans_event() {
+        cv.qIdx++;
+        cv.quiz = cv.quizAll[cv.qIdx];
+        cv.ans_img.setAttribute("src", cv.ImgArr);
+
+        for (var i = 0; i < cv.quizAll.length; i++) {
+          cv.quizAll[i].classList.add("hidden");
+        }
+        cv.quiz.classList.remove("hidden");
+
+        cv.end_audio(0);
+      }
+    } else {
+      isAudio.play(cv.soundWrong, true);
+      self.classList.add("wrong_ani");
+      self.addEventListener("animationend", wrong_event, false);
+      self.addEventListener("webkitAnimationEnd", wrong_event, false);
+      function wrong_event() {
+        self.removeEventListener("animationend", wrong_event, false);
+        self.removeEventListener("webkitAnimationEnd", wrong_event, false);
+        self.classList.remove("wrong_ani");
+      }
+      console.log("오답");
+    }
+  };
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+<<<< css >>>>
+.wrong_ani{
+    animation: wrong_ani 0.5s ease-out;
+    -webkit-animation: wrong_ani 0.5s ease-out;
+}
+@keyframes wrong_ani{
+    0%{
+        transform: translateX(0px);
+    }
+    25%{
+        transform: translateX(-10px);
+    }
+    50%{
+        transform: translateX(10px);
+    }
+    75%{
+        transform: translateX(-10px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}

@@ -1,0 +1,10 @@
+<예시>
+                        
+for (var i = 0; i < cv.quizItems.length; i++) {
+  cv.quizItems[i].classList.remove("active");                                    
+}
+
+
+                for (var i = 0; i < cv.guideDiv.length; i++) {
+                    cv.guideDiv[i].classList.remove("active");
+                }

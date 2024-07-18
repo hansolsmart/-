@@ -1,0 +1,12 @@
+    /**
+     * content: onCompleteAPI
+     */        
+    cv.onCompleteAPI = function() {
+        // 1. 학습 전송 완료 후 프로세스 진행
+        // 2. 모든 학습 종료 후 다음 학습 자동 진행을 위해 external.nextUnit() 호출
+        external.nextUnit();
+    }
+    // external.completeUnit(false, cv.onCompleteAPI); //호출
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+external.completeUnit(false, cv.onCompleteAPI); 

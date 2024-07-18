@@ -1,0 +1,43 @@
+환경지킴이 7차시 이산화탄소 클릭이벤트
+1)
+  this.co2Top = document.querySelectorAll(".co2Top"); // 하늘위 co2
+  this.co2Btm = document.querySelectorAll(".co2Btm"); // 땅속 co2
+
+
+2)  cv.init = function () {
+    var self = this;
+    for (var i = 0; i < cv.co2Top.length; i++) {
+      cv.co2Top[i].addEventListener("click", cv.clickContent, false);
+    }
+  };
+
+
+3)
+cv.clickContent = function () {
+    var self = this;
+
+    for (var i = 0; i < cv.co2Top.length; i++) {
+      cv.co2Top[i].removeEventListener("click", cv.clickContent, false);
+      cv.co2Top[i].addEventListener("click", cv.clickContent, false);
+    }
+}
+
+    /* 왼쪽 co2인지 확인하는것 */
+    if (self.classList.contains("co2_01") == true) {
+      cv.co2Top[0].classList.add("co2Top_left");
+      cv.co2Top[0].addEventListener("webkitAnimationEnd", co2Btm_hide, false);
+      cv.co2Top[0].addEventListener("animationend", co2Btm_hide, false);
+    } else {
+      cv.co2Top[1].classList.add("co2Top_right");
+      cv.co2Top[1].addEventListener("webkitAnimationEnd", co2Btm_hide, false);
+      cv.co2Top[1].addEventListener("animationend", co2Btm_hide, false);
+    }
+
+    function co2Btm_hide() {
+      var self = this;
+      if (self.classList.contains("co2_01") == true) {
+        cv.co2Btm[0].classList.remove("hidden");
+      } else {
+        cv.co2Btm[1].classList.remove("hidden");
+      }
+    }

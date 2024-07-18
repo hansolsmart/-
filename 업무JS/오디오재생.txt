@@ -1,0 +1,1 @@
+isAudio.play(cv.변수명, true); 추가

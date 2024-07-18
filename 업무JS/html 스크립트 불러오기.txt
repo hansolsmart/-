@@ -1,0 +1,10 @@
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/lottie.min.js"></script>    
+
+
+
+    <script src="./js/svg_nyangi.js"></script>
+    <script src="./js/fnSvgAnimation.js"></script>
+    <script src="./js/content_info.js"></script>
+    <script src="./js/cm_function.js"></script>
+    <script src="./js/content.js"></script>
